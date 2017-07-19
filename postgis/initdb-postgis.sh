@@ -23,7 +23,7 @@ for DB in template_postgis "$POSTGRES_DB"; do
 EOSQL
 done
 
-#import Melbourne city
-osm2pgsql --style /openstreetmap-carto/openstreetmap-carto.style -d gis -U postgres -k --slim /melbourne_australia.osm.pbf
+osm2pgsql --style /openstreetmap-carto/openstreetmap-carto.style -d gis -U postgres -k --slim /tmp/import/australia-oceania-latest.osm
 
 touch /var/lib/postgresql/data/DB_INITED
+# rm /australia-oceania-latest.osm

@@ -4,11 +4,15 @@ services:
     build: ./postgis
     volumes:
       - ./data:/var/lib/postgresql/data
+      - ./postgis/import:/tmp/import
+    ports:
+      - "5432:5432"
     environment:
       - POSTGRES_DB=gis
   renderer:
     build: ./renderer
     volumes:
+      - ./renderer/tiles:/tmp/tiles
       - ./renderer/map_data:/map_data
       - ./renderer/scripts:/scripts
     volumes_from:
