@@ -9,6 +9,7 @@ services:
       - "5432:5432"
     environment:
       - POSTGRES_DB=gis
+    restart: always
   renderer:
     build: ./renderer
     volumes:
@@ -22,9 +23,11 @@ services:
       - "9090:9090"
     depends_on:
       - postgis
+    restart: always
   web:
     image: nginx:1.11-alpine
     volumes:
       - ./web:/usr/share/nginx/html
     ports:
       - "8888:80"
+    restart: always
